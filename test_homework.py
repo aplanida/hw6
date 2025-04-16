@@ -31,6 +31,11 @@ def test_dark_theme_by_time_and_user_choice():
         is_dark_theme = True
     elif dark_theme_enabled_by_user == False:
         is_dark_theme = False
+    elif dark_theme_enabled_by_user == None:
+        if time(hour=6) <= current_time < time(hour=22):
+            is_dark_theme = False
+        else:
+            is_dark_theme = True
     else:
         if time(hour=6) <= current_time < time(hour=22):
             is_dark_theme = False
@@ -92,6 +97,7 @@ def test_readable_function():
 def new_function(func, *args):
     function_name = func.__name__.replace('_', ' ').title()
     arguments = ', '.join([*args])
+    print(f"{function_name} [{arguments}]")
     return f"{function_name} [{arguments}]"
 
 
